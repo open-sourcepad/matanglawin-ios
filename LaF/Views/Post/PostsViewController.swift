@@ -61,7 +61,7 @@ class PostsViewController: TemplateViewController, UIScrollViewDelegate , LostTa
     }
     
     override func viewDidAppear(animated: Bool) {
-        print(self.post.postId = 15)
+//        print(self.post.postId = 15)
         foundTableView.assignPost(self.post)
         lostTableView.assignPost(self.post)
     }
