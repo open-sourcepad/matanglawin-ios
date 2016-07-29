@@ -13,7 +13,6 @@
 		C62B95C21D4A6CBD0000291F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62B95C01D4A6CBD0000291F /* Main.storyboard */; };
 		C62B95C41D4A6CBD0000291F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62B95C31D4A6CBD0000291F /* Assets.xcassets */; };
 		C62B95C71D4A6CBD0000291F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62B95C51D4A6CBD0000291F /* LaunchScreen.storyboard */; };
-		C62B95D01D4A73A00000291F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62B95CF1D4A73A00000291F /* HomeViewController.swift */; };
 		C62B95D41D4A741F0000291F /* TemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62B95D31D4A741F0000291F /* TemplateViewController.swift */; };
 		C62B95D91D4A74910000291F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62B95D81D4A74910000291F /* Constants.swift */; };
 		C62B95DB1D4A75690000291F /* RGBConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62B95DA1D4A75690000291F /* RGBConverter.swift */; };
@@ -25,9 +24,12 @@
 		C62B95F01D4A84730000291F /* UserDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62B95EF1D4A84730000291F /* UserDM.swift */; };
 		C62B95F31D4A91140000291F /* LostTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62B95F21D4A91140000291F /* LostTableView.swift */; };
 		C62B95F61D4A914C0000291F /* FoundTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62B95F51D4A914C0000291F /* FoundTableView.swift */; };
+		C64BCC831D4B9E77007D4FDB /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64BCC821D4B9E77007D4FDB /* PostsViewController.swift */; };
+		C65FEB9C1D4B6BED00B6799D /* FinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65FEB9B1D4B6BED00B6799D /* FinderViewController.swift */; };
 		C6E077ED1D4AE89100A087A3 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E077EC1D4AE89100A087A3 /* UserController.swift */; };
 		C6E077EF1D4AF64E00A087A3 /* PostDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E077EE1D4AF64E00A087A3 /* PostDM.swift */; };
 		C6E077F31D4AFFEA00A087A3 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E077F21D4AFFEA00A087A3 /* PostCell.swift */; };
+		C6E077F81D4B0FE600A087A3 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E077F71D4B0FE600A087A3 /* PostDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +42,6 @@
 		C62B95C31D4A6CBD0000291F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C62B95C61D4A6CBD0000291F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C62B95C81D4A6CBD0000291F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C62B95CF1D4A73A00000291F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Views/HomeViewController.swift; sourceTree = "<group>"; };
 		C62B95D31D4A741F0000291F /* TemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TemplateViewController.swift; path = Views/TemplateViewController.swift; sourceTree = "<group>"; };
 		C62B95D81D4A74910000291F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Helpers/Constants.swift; sourceTree = "<group>"; };
 		C62B95DA1D4A75690000291F /* RGBConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGBConverter.swift; path = Helpers/RGBConverter.swift; sourceTree = "<group>"; };
@@ -52,9 +53,12 @@
 		C62B95EF1D4A84730000291F /* UserDM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDM.swift; path = Models/UserDM.swift; sourceTree = "<group>"; };
 		C62B95F21D4A91140000291F /* LostTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LostTableView.swift; path = Views/Tables/LostTableView.swift; sourceTree = "<group>"; };
 		C62B95F51D4A914C0000291F /* FoundTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FoundTableView.swift; path = Views/Tables/FoundTableView.swift; sourceTree = "<group>"; };
+		C64BCC821D4B9E77007D4FDB /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostsViewController.swift; path = Views/Post/PostsViewController.swift; sourceTree = "<group>"; };
+		C65FEB9B1D4B6BED00B6799D /* FinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FinderViewController.swift; path = Views/Post/FinderViewController.swift; sourceTree = "<group>"; };
 		C6E077EC1D4AE89100A087A3 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserController.swift; path = APIs/UserController.swift; sourceTree = "<group>"; };
 		C6E077EE1D4AF64E00A087A3 /* PostDM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostDM.swift; path = Models/PostDM.swift; sourceTree = "<group>"; };
 		C6E077F21D4AFFEA00A087A3 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostCell.swift; path = Cells/PostCell.swift; sourceTree = "<group>"; };
+		C6E077F71D4B0FE600A087A3 /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostDetailViewController.swift; path = Views/Post/PostDetailViewController.swift; sourceTree = "<group>"; };
 		FB4A4AC65B5040327576B609 /* Pods-LaF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaF.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LaF/Pods-LaF.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,10 +120,10 @@
 		C62B95CE1D4A73590000291F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C6E077F41D4B0FAD00A087A3 /* Post */,
 				C6E077F11D4AFFD100A087A3 /* Cells */,
 				C62B95F41D4A911D0000291F /* Tables */,
 				C62B95DC1D4A79820000291F /* User */,
-				C62B95CF1D4A73A00000291F /* HomeViewController.swift */,
 				C62B95D31D4A741F0000291F /* TemplateViewController.swift */,
 			);
 			name = Views;
@@ -178,6 +182,16 @@
 				C6E077F21D4AFFEA00A087A3 /* PostCell.swift */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		C6E077F41D4B0FAD00A087A3 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				C6E077F71D4B0FE600A087A3 /* PostDetailViewController.swift */,
+				C65FEB9B1D4B6BED00B6799D /* FinderViewController.swift */,
+				C64BCC821D4B9E77007D4FDB /* PostsViewController.swift */,
+			);
+			name = Post;
 			sourceTree = "<group>";
 		};
 		E376ECA3F83B40DC2065C39D /* Pods */ = {
@@ -315,19 +329,21 @@
 				C62B95DB1D4A75690000291F /* RGBConverter.swift in Sources */,
 				C62B95E71D4A819D0000291F /* LostController.swift in Sources */,
 				C62B95E11D4A814B0000291F /* PostController.swift in Sources */,
+				C64BCC831D4B9E77007D4FDB /* PostsViewController.swift in Sources */,
 				C62B95F31D4A91140000291F /* LostTableView.swift in Sources */,
 				C62B95F01D4A84730000291F /* UserDM.swift in Sources */,
+				C6E077F81D4B0FE600A087A3 /* PostDetailViewController.swift in Sources */,
 				C62B95ED1D4A81EA0000291F /* FacebookViewController.swift in Sources */,
 				C62B95D91D4A74910000291F /* Constants.swift in Sources */,
 				C62B95E91D4A81B30000291F /* FoundController.swift in Sources */,
 				C62B95EB1D4A81C20000291F /* FacebookController.swift in Sources */,
+				C65FEB9C1D4B6BED00B6799D /* FinderViewController.swift in Sources */,
 				C62B95BF1D4A6CBD0000291F /* ViewController.swift in Sources */,
 				C62B95F61D4A914C0000291F /* FoundTableView.swift in Sources */,
 				C62B95BD1D4A6CBD0000291F /* AppDelegate.swift in Sources */,
 				C6E077ED1D4AE89100A087A3 /* UserController.swift in Sources */,
 				C62B95D41D4A741F0000291F /* TemplateViewController.swift in Sources */,
 				C6E077EF1D4AF64E00A087A3 /* PostDM.swift in Sources */,
-				C62B95D01D4A73A00000291F /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,10 +455,12 @@
 			baseConfigurationReference = FB4A4AC65B5040327576B609 /* Pods-LaF.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikki F (RDSXJMA69T)";
 				INFOPLIST_FILE = LaF/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sourcepad.LaF;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sourcepad.polly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "be2b78b5-0732-4952-a13c-c090bd82251e";
 			};
 			name = Debug;
 		};
@@ -453,8 +471,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LaF/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sourcepad.LaF;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sourcepad.polly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f8e2df58-1c18-4cdb-b649-93d8a8fc5a71";
 			};
 			name = Release;
 		};

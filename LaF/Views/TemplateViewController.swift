@@ -1,6 +1,7 @@
 import UIKit
 
 class TemplateViewController: UIViewController {
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,7 +16,7 @@ class TemplateViewController: UIViewController {
         let camera = UIButton()
         camera.setTitle("Camera", forState: .Normal)
         camera.frame = CGRectMake(0, 0, 80, 50)
-        camera.addTarget(self, action: Selector("action"), forControlEvents: .TouchUpInside)
+        camera.addTarget(self, action: Selector("cameraAction"), forControlEvents: .TouchUpInside)
 
         //.... Set Right/Left Bar Button item
         let rightBarButton = UIBarButtonItem()
@@ -25,11 +26,19 @@ class TemplateViewController: UIViewController {
         let burger = UIButton()
         burger.setTitle("Burger", forState: .Normal)
         burger.frame = CGRectMake(0, 0, 80, 50)
-        burger.addTarget(self, action: Selector("action"), forControlEvents: .TouchUpInside)
+        burger.addTarget(self, action: Selector("burgerAction"), forControlEvents: .TouchUpInside)
         
         //.... Set Right/Left Bar Button item
         let leftBarButton = UIBarButtonItem()
         leftBarButton.customView = burger
         self.navigationItem.leftBarButtonItem = leftBarButton
+    }
+
+    func burgerAction() {
+        print("soon...")
+    }
+    
+    func cameraAction(){
+        self.appDelegate.window?.rootViewController = self.appDelegate.mainNavigation
     }
 }

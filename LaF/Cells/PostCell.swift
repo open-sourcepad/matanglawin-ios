@@ -7,19 +7,19 @@ class PostCell: UITableViewCell {
     var delegate: AnyObject?
 
     lazy var photo: UIImageView = {
-        let obj: UIImageView = UIImageView(frame: CGRectMake(10, 10, 90, 90))
+        let obj: UIImageView = UIImageView(frame: CGRectMake(10, 10, 80, 80))
         obj.backgroundColor = UIColor.lightGrayColor()
         return obj
     }()
 
     lazy var nameLabel: UILabel = {
-        let obj: UILabel = UILabel(frame: CGRectMake(110, 10, 200, 40))
+        let obj: UILabel = UILabel(frame: CGRectMake(110, 10, 200, 30))
         
         return obj
     }()
 
     lazy var percentLabel: UILabel = {
-        let obj: UILabel = UILabel(frame: CGRectMake(110, 60, 200, 40))
+        let obj: UILabel = UILabel(frame: CGRectMake(110, 50, 200, 30))
         
         return obj
     }()
@@ -64,7 +64,7 @@ class PostCell: UITableViewCell {
     func setCellData(post: PostDM){
         nameLabel.text = post.name;
         percentLabel.text = "60% alike"
-        handleImage(post.picture!)
+        handleImage(post.image_url!)
     }
     
     func handleImage(url: String) {

@@ -17,6 +17,7 @@ class LostTableView: UIView, UITableViewDelegate, UITableViewDataSource, PostCel
     }()
 
     var posts: [PostDM] = []
+    var post: PostDM = PostDM()
 
     
     override init(frame: CGRect) {
@@ -26,24 +27,32 @@ class LostTableView: UIView, UITableViewDelegate, UITableViewDataSource, PostCel
         self.backgroundColor = UIColor.whiteColor()
 
         self.addSubview(self.tableView)
-        getPost()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     
+    func assignPost(post: PostDM) {
+        self.post = post
+        self.posts = []
+        getPost()
+    }
+
     func getPost() {
-        Alamofire.request(.GET, Constants.API.lost, parameters: ["foo": "bar"])
+        Alamofire.request(.GET, Constants.API.lost, headers:
+            ["AuthToken": UserDM.getActiveUser().authenticationToken!], parameters: ["id": self.post.postId!])
             .validate()
             .responseJSON { response in
                 switch response.result {
                 case .Success:
-                    let json = JSON(response.result.value!)
+                    let json = JSON(response.result.value!)["collection"]
+                    print(json)
                     for (_, subJson) in json {
                         let obj: PostDM = PostDM();
                         obj.name = subJson["name"].stringValue
-                        obj.picture = subJson["picture"].stringValue
+                        obj.image_url = subJson["image_url"].stringValue
                         self.posts.append(obj)
                         
                     }

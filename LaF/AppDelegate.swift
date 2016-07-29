@@ -1,12 +1,7 @@
-//
-//  AppDelegate.swift
-//  LaF
-//
-//  Created by Rodel Medina on 7/29/16.
-//  Copyright © 2016 Rodel Medina. All rights reserved.
-//
-
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
+import FBSDKShareKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,40 +10,67 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var currentUser: UserDM = UserDM();
     
-    lazy var homeController: HomeViewController = {
-        var ctrl = HomeViewController()
-        ctrl.title = "Feeds"
+    lazy var finderViewController: FinderViewController = {
+        var ctrl = FinderViewController()
         return ctrl
     }()
 
-    lazy var homeNavigation: UINavigationController = {
+    lazy var mainNavigation: UINavigationController = {
         var ctrl = UINavigationController()
         ctrl.title = "Feeds"
         return ctrl
     }()
 
+    lazy var postsViewController: PostsViewController = {
+        var ctrl = PostsViewController()
+        return ctrl
+    }()
+    
+    lazy var postNavigation: UINavigationController = {
+        var ctrl = UINavigationController()
+        ctrl.title = "Feeds"
+        return ctrl
+    }()
 
-    lazy var mainTabBar: UITabBarController = {
-        var ctrl = UITabBarController()
-        ctrl.tabBar.tintColor = Constants.Colors.colorThemeLightGray;
-        ctrl.tabBar.barTintColor = Constants.Colors.colorTheme;
-        ctrl.tabBar.hidden = true;
+    lazy var facebookController: FacebookViewController = {
+        var ctrl = FacebookViewController()
+        ctrl.title = "Auth"
+        return ctrl
+    }()
+
+
+    lazy var authNavigation: UINavigationController = {
+        var ctrl = UINavigationController()
+        ctrl.title = "Auth"
         return ctrl
     }()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        homeNavigation.viewControllers    = [homeController]
-        mainTabBar.viewControllers = [homeNavigation]
+        mainNavigation.viewControllers    = [finderViewController]
+        authNavigation.viewControllers    = [facebookController]
+        postNavigation.viewControllers    = [postsViewController]
 
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         if let window = window {
-            window.rootViewController = mainTabBar
+            if (NSUserDefaults.standardUserDefaults().objectForKey("defaults saved user") == nil) {
+                window.rootViewController = authNavigation
+            }else{
+                window.rootViewController = mainNavigation
+            }
+
             window.makeKeyAndVisible()
         }
 
         return true
+    }
+
+    func application(application: UIApplication,openURL url: NSURL, options: [String: AnyObject]) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application,
+            openURL: url,
+            sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String,
+            annotation: options [UIApplicationOpenURLOptionsAnnotationKey])
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -65,6 +87,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
     }
-
 
 }

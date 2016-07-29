@@ -23,10 +23,11 @@ struct Constants {
     
     // Constants.API.nameOfConstant
     struct API {
-        static let  domain = "http://localhost:3000/api/v1/"
-        static let  signup = domain + "signup"
-        static let  lost = domain + "posts"
-        static let  found = domain + "posts"
+        static let  domain = "https://finder-sp.herokuapp.com/api/" //"http://87d4b8e6.ngrok.io/api/"
+        static let  signup = domain + "oauth"
+        static let  lost = domain + "search/lost"
+        static let  found = domain + "search/found"
+        static let  create_post = domain + "listings"
     }
     
 }
