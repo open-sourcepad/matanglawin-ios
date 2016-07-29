@@ -25,6 +25,7 @@
 		C62B95F31D4A91140000291F /* LostTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62B95F21D4A91140000291F /* LostTableView.swift */; };
 		C62B95F61D4A914C0000291F /* FoundTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62B95F51D4A914C0000291F /* FoundTableView.swift */; };
 		C64BCC831D4B9E77007D4FDB /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64BCC821D4B9E77007D4FDB /* PostsViewController.swift */; };
+		C65BCEAA1D4C155D00CA6CCC /* mosaic.png in Resources */ = {isa = PBXBuildFile; fileRef = C65BCEA91D4C155D00CA6CCC /* mosaic.png */; };
 		C65FEB9C1D4B6BED00B6799D /* FinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65FEB9B1D4B6BED00B6799D /* FinderViewController.swift */; };
 		C6E077ED1D4AE89100A087A3 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E077EC1D4AE89100A087A3 /* UserController.swift */; };
 		C6E077EF1D4AF64E00A087A3 /* PostDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E077EE1D4AF64E00A087A3 /* PostDM.swift */; };
@@ -54,6 +55,7 @@
 		C62B95F21D4A91140000291F /* LostTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LostTableView.swift; path = Views/Tables/LostTableView.swift; sourceTree = "<group>"; };
 		C62B95F51D4A914C0000291F /* FoundTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FoundTableView.swift; path = Views/Tables/FoundTableView.swift; sourceTree = "<group>"; };
 		C64BCC821D4B9E77007D4FDB /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostsViewController.swift; path = Views/Post/PostsViewController.swift; sourceTree = "<group>"; };
+		C65BCEA91D4C155D00CA6CCC /* mosaic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mosaic.png; sourceTree = "<group>"; };
 		C65FEB9B1D4B6BED00B6799D /* FinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FinderViewController.swift; path = Views/Post/FinderViewController.swift; sourceTree = "<group>"; };
 		C6E077EC1D4AE89100A087A3 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserController.swift; path = APIs/UserController.swift; sourceTree = "<group>"; };
 		C6E077EE1D4AF64E00A087A3 /* PostDM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostDM.swift; path = Models/PostDM.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		C62B95BB1D4A6CBD0000291F /* LaF */ = {
 			isa = PBXGroup;
 			children = (
+				C65BCEA81D4C155D00CA6CCC /* Images */,
 				C62B95EE1D4A845C0000291F /* Models */,
 				C62B95DF1D4A81280000291F /* APIs */,
 				C62B95D51D4A746E0000291F /* Helpers */,
@@ -174,6 +177,14 @@
 				C62B95F51D4A914C0000291F /* FoundTableView.swift */,
 			);
 			name = Tables;
+			sourceTree = "<group>";
+		};
+		C65BCEA81D4C155D00CA6CCC /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C65BCEA91D4C155D00CA6CCC /* mosaic.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		C6E077F11D4AFFD100A087A3 /* Cells */ = {
@@ -265,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C62B95C71D4A6CBD0000291F /* LaunchScreen.storyboard in Resources */,
+				C65BCEAA1D4C155D00CA6CCC /* mosaic.png in Resources */,
 				C62B95C41D4A6CBD0000291F /* Assets.xcassets in Resources */,
 				C62B95C21D4A6CBD0000291F /* Main.storyboard in Resources */,
 			);

@@ -23,15 +23,15 @@ class TemplateViewController: UIViewController {
         rightBarButton.customView = camera
         self.navigationItem.rightBarButtonItem = rightBarButton
 
-        let burger = UIButton()
-        burger.setTitle("Burger", forState: .Normal)
-        burger.frame = CGRectMake(0, 0, 80, 50)
-        burger.addTarget(self, action: Selector("burgerAction"), forControlEvents: .TouchUpInside)
-        
-        //.... Set Right/Left Bar Button item
-        let leftBarButton = UIBarButtonItem()
-        leftBarButton.customView = burger
-        self.navigationItem.leftBarButtonItem = leftBarButton
+//        let burger = UIButton()
+//        burger.setTitle("Burger", forState: .Normal)
+//        burger.frame = CGRectMake(0, 0, 80, 50)
+//        burger.addTarget(self, action: Selector("burgerAction"), forControlEvents: .TouchUpInside)
+//        
+//        //.... Set Right/Left Bar Button item
+//        let leftBarButton = UIBarButtonItem()
+//        leftBarButton.customView = burger
+//        self.navigationItem.leftBarButtonItem = leftBarButton
     }
 
     func burgerAction() {

@@ -9,6 +9,7 @@ class PostCell: UITableViewCell {
     lazy var photo: UIImageView = {
         let obj: UIImageView = UIImageView(frame: CGRectMake(10, 10, 80, 80))
         obj.backgroundColor = UIColor.lightGrayColor()
+//        obj.contentMode = UIViewContentMode.ScaleAspectFit
         return obj
     }()
 

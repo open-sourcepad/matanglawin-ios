@@ -5,20 +5,68 @@ import SwiftyJSON
 class FacebookViewController: UIViewController, FacebookControllerDelegate  {
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
+    lazy var loginButon: UIButton = {
+        var obj = UIButton(frame: CGRectMake(30, (self.view.frame.size.height/2), self.view.frame.size.width - 60, 50));
+        obj.backgroundColor = Constants.Colors.colorThemeLightGray
+        obj.setTitleColor(Constants.Colors.colorTheme, forState: .Normal)
+        obj.setTitle("Login via Facebook", forState: .Normal)
+        obj.addTarget(self, action: Selector("loginButtonAction"), forControlEvents: .TouchUpInside)
+        return obj
+    }()
+
+    lazy var photo: UIImageView = {
+        let obj: UIImageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+        obj.backgroundColor = UIColor.lightGrayColor()
+        obj.image = UIImage(named: "mosaic")
+        obj.contentMode = UIViewContentMode.Center
+        return obj
+    }()
+
+    lazy var finderLabel: UILabel = {
+        let obj: UILabel = UILabel(frame: CGRectMake(0, (self.view.frame.size.height/2) - 75, self.view.frame.size.width, 50))
+        obj.text = "Finder!"
+        obj.textAlignment = NSTextAlignment.Center
+        obj.backgroundColor = Constants.Colors.colorTheme
+        obj.textColor = Constants.Colors.colorThemeLightGray
+        
+        return obj
+    }()
+
+    lazy var loadingLabel: UILabel = {
+        let obj: UILabel = UILabel(frame: self.loginButon.frame)
+        obj.text = "Loading..."
+        obj.textAlignment = NSTextAlignment.Center
+        obj.backgroundColor = Constants.Colors.colorThemeLightGray
+        obj.textColor = Constants.Colors.colorTheme
+        obj.hidden = true
+        
+        return obj
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = Constants.Colors.colorTheme
         self.navigationController?.navigationBarHidden = true;
-        FacebookController.connectFacebook(self.parentViewController!, delegate: self)
+
+        self.view.addSubview(photo)
+        self.view.addSubview(loginButon)
+        self.view.addSubview(finderLabel)
+        self.view.addSubview(loadingLabel)
     }
  
     func connectFacebookDidFail() {
         print("Callback")
     }
+    
+    func loginButtonAction() {
+        FacebookController.connectFacebook(self.parentViewController!, delegate: self)
+    }
 
     func connectFacebookDidFinish(user: UserDM) {
         signup(user)
+        self.loadingLabel.hidden = false
+        self.loginButon.hidden = true
     }
 
     func signup(user: UserDM) {

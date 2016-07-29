@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if (NSUserDefaults.standardUserDefaults().objectForKey("defaults saved user") == nil) {
                 window.rootViewController = authNavigation
             }else{
-                window.rootViewController = mainNavigation
+                window.rootViewController = mainNavigation //postNavigation
             }
 
             window.makeKeyAndVisible()

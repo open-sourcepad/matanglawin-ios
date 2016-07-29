@@ -7,12 +7,20 @@ class FoundTableView: UIView, UITableViewDelegate, UITableViewDataSource, PostCe
     
     var delegate: AnyObject?
     
+    lazy var refreshControl: UIRefreshControl = {
+        var obj = UIRefreshControl();
+        obj.addTarget(self, action: "refreshAction:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        return obj
+    }()
+    
     lazy var tableView: UITableView = {
         var obj = UITableView();
         obj.delegate = self;
         obj.delegate      =   self
         obj.dataSource    =   self
         obj.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PostCell")
+        obj.addSubview(self.refreshControl)
         return obj
     }()
     
@@ -27,6 +35,7 @@ class FoundTableView: UIView, UITableViewDelegate, UITableViewDataSource, PostCe
         self.backgroundColor = UIColor.whiteColor()
         
         self.addSubview(self.tableView)
+        self.refreshControl.beginRefreshing()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,7 +44,6 @@ class FoundTableView: UIView, UITableViewDelegate, UITableViewDataSource, PostCe
     
     func assignPost(post: PostDM) {
         self.post = post
-        self.posts = []
         getPost()
     }
     
@@ -46,10 +54,21 @@ class FoundTableView: UIView, UITableViewDelegate, UITableViewDataSource, PostCe
             .responseJSON { response in
                 switch response.result {
                 case .Success:
+                    self.posts = []
                     let json = JSON(response.result.value!)["collection"]
                     for (_, subJson) in json {
                         let obj: PostDM = PostDM();
+                        obj.postId = subJson["id"].intValue
                         obj.name = subJson["name"].stringValue
+                        obj.desc = subJson["description"].stringValue
+                        obj.contact = subJson["contact"].stringValue
+                        obj.lambdal_id = subJson["lambdal_id"].stringValue
+                        obj.nickname = subJson["nickname"].stringValue
+                        obj.birthday = subJson["birthday"].stringValue
+                        obj.age = subJson["age"].intValue
+                        obj.created_at = subJson["created_at"].stringValue
+                        obj.updated_at = subJson["updated_at"].stringValue
+                        obj.mytype = subJson["mytype"].stringValue
                         obj.image_url = subJson["image_url"].stringValue
                         self.posts.append(obj)
                         
@@ -57,6 +76,7 @@ class FoundTableView: UIView, UITableViewDelegate, UITableViewDataSource, PostCe
                     
                     print(self.posts)
                     self.tableView.reloadData()
+                    self.refreshControl.endRefreshing()
                     
                 case .Failure(let error):
                     print(error)
@@ -84,6 +104,10 @@ class FoundTableView: UIView, UITableViewDelegate, UITableViewDataSource, PostCe
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         delegate?.foundTablePostCell!(self, postCellDidTap: self.posts[indexPath.row])
+    }
+
+    func refreshAction(sender:AnyObject) {
+        getPost()
     }
     
 }
