@@ -15,6 +15,7 @@ class PostDM: NSObject {
     var updated_at: String?
     var mytype: String?
     var image_url: String?
+    var match: String?
     
     override init() {
         self.postId = 0
@@ -29,5 +30,6 @@ class PostDM: NSObject {
         self.updated_at = ""
         self.mytype = ""
         self.image_url = ""
+        self.match = ""
     }
 }

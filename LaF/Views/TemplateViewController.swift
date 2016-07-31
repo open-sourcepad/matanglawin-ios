@@ -13,15 +13,14 @@ class TemplateViewController: UIViewController {
         self.navigationController!.navigationBar.barTintColor = Constants.Colors.colorTheme
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Constants.Colors.colorThemeLightGray]
 
-        let camera = UIButton()
-        camera.setTitle("Camera", forState: .Normal)
-        camera.frame = CGRectMake(0, 0, 80, 50)
-        camera.addTarget(self, action: Selector("cameraAction"), forControlEvents: .TouchUpInside)
 
-        //.... Set Right/Left Bar Button item
-        let rightBarButton = UIBarButtonItem()
-        rightBarButton.customView = camera
+        let rightBarButton = UIBarButtonItem(image: UIImage(named: "icon-camera"),
+            style: UIBarButtonItemStyle.Plain ,
+            target: self, action: "cameraAction")
+        rightBarButton.tintColor = UIColor.whiteColor()
         self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
 
 //        let burger = UIButton()
 //        burger.setTitle("Burger", forState: .Normal)

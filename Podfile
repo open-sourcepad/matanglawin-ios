@@ -8,5 +8,4 @@ target 'LaF' do
     pod 'SwiftyJSON', '~> 2.3.0'
     pod 'SDWebImage', '~>3.7'
     pod 'ImageViewer'
-    # pod 'FontAwesome.swift', '~> 0.8'
 end

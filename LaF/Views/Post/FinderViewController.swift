@@ -2,6 +2,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+private let kFieldHeight: CGFloat = 40.0
 
 class FinderViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -12,63 +13,65 @@ class FinderViewController: UIViewController, UIImagePickerControllerDelegate, U
         return obj
     }()
 
-    lazy var changePhotoButton: UIButton = {
-        var obj = UIButton(frame: CGRectMake(10, (self.view.frame.size.height-(50*3+15)), self.view.frame.size.width - 20, 50));
-        obj.backgroundColor = Constants.Colors.colorThemeLightGray
-        obj.setTitleColor(Constants.Colors.colorTheme, forState: .Normal)
-        obj.setTitle("Photo", forState: .Normal)
+    lazy var changePhotoButton: MainButton = {
+        var obj = MainButton(frame: CGRectMake(10, (self.view.frame.size.height-(50*3+15)), self.view.frame.size.width - 20, 50));
+        obj.setTitle("Choose Photo", forState: .Normal)
         obj.addTarget(self, action: Selector("changePhotoAction"), forControlEvents: .TouchUpInside)
         return obj
     }()
 
-    lazy var lostButton: UIButton = {
-        var obj = UIButton(frame: CGRectMake(10, (self.view.frame.size.height-(50*2+10)), self.view.frame.size.width - 20, 50));
-        obj.backgroundColor = Constants.Colors.colorThemeLightGray
-        obj.setTitleColor(Constants.Colors.colorTheme, forState: .Normal)
+    lazy var lostButton: MainButton = {
+        var obj = MainButton(frame: CGRectMake(10, (self.view.frame.size.height-(50*2+10)), self.view.frame.size.width - 20, 50));
         obj.setTitle("Lost", forState: .Normal)
         obj.addTarget(self, action: Selector("lostButtonAction"), forControlEvents: .TouchUpInside)
         return obj
     }()
 
-    lazy var foundButton: UIButton = {
-        var obj = UIButton(frame: CGRectMake(10, (self.view.frame.size.height-(50+5)), self.view.frame.size.width - 20, 50));
-        obj.backgroundColor = Constants.Colors.colorThemeLightGray
-        obj.setTitleColor(Constants.Colors.colorTheme, forState: .Normal)
+    lazy var finderLabel: UILabel = {
+        let obj: UILabel = UILabel(frame: CGRectMake(0,  (self.view.frame.size.height/2), self.view.frame.size.width, 100))
+        obj.text = "Choose Photo and Upload"
+        obj.textAlignment = NSTextAlignment.Center
+        obj.backgroundColor = Constants.Colors.colorTheme
+        obj.textColor = Constants.Colors.colorFontReg
+        obj.font = UIFont(name: obj.font.fontName, size: 20.0)
+        
+        return obj
+    }()
+
+    lazy var foundButton: MainButton = {
+        var obj = MainButton(frame: CGRectMake(10, (self.view.frame.size.height-(50+5)), self.view.frame.size.width - 20, 50));
         obj.setTitle("Found", forState: .Normal)
         obj.addTarget(self, action: Selector("foundButtonAction"), forControlEvents: .TouchUpInside)
         return obj
     }()
 
-    lazy var nameField: UITextField = {
-        var obj = UITextField(frame: CGRectMake(10, 20, self.view.frame.size.width - 20, 50));
-        obj.backgroundColor = Constants.Colors.colorTheme
+    lazy var nameField: MainTextField = {
+        var obj = MainTextField(frame: CGRectMake(10, 20, self.view.frame.size.width - 20, kFieldHeight));
+        obj.isetPlaceholder("Name")
         return obj
     }()
 
-    lazy var descriptionField: UITextField = {
-        var obj = UITextField(frame: CGRectMake(10, 80, self.view.frame.size.width - 20, 50));
-        obj.backgroundColor = Constants.Colors.colorTheme
+    lazy var descriptionField: MainTextField = {
+        var obj = MainTextField(frame: CGRectMake(10, self.nameField.frame.origin.y + self.nameField.frame.size.height + 10, self.nameField.frame.size.width, self.nameField.frame.size.height));
+        obj.isetPlaceholder("Description")
         return obj
     }()
 
-    lazy var numberField: UITextField = {
-        var obj = UITextField(frame: CGRectMake(10, 140, self.view.frame.size.width - 20, 50));
-        obj.backgroundColor = Constants.Colors.colorTheme
+    lazy var numberField: MainTextField = {
+        var obj = MainTextField(frame: CGRectMake(10, self.descriptionField.frame.origin.y + self.descriptionField.frame.size.height + 10, self.descriptionField.frame.size.width, self.descriptionField.frame.size.height));
+        obj.isetPlaceholder("Contact Number")
         return obj
     }()
 
-    lazy var findButton: UIButton = {
-        var obj = UIButton(frame: CGRectMake(10, 200, self.view.frame.size.width - 20, 50));
-        obj.backgroundColor = Constants.Colors.colorThemeLightGray
-        obj.setTitleColor(Constants.Colors.colorTheme, forState: .Normal)
+    lazy var findButton: MainButton = {
+        var obj = MainButton(frame: CGRectMake(10, self.numberField.frame.origin.y + self.numberField.frame.size.height + 10, self.numberField.frame.size.width, 50));
         obj.setTitle("Search", forState: .Normal)
         obj.addTarget(self, action: Selector("findButtonAction"), forControlEvents: .TouchUpInside)
         return obj
     }()
 
-    lazy var cancelButton: UIButton = {
-        var obj = UIButton(frame: CGRectMake(10, 260, self.view.frame.size.width - 20, 50));
-        obj.backgroundColor = Constants.Colors.colorThemeLightGray
+    lazy var cancelButton: MainButton = {
+        var obj = MainButton(frame: CGRectMake(10, self.findButton.frame.origin.y + self.findButton.frame.size.height + 10, self.findButton.frame.size.width, 50));
         obj.setTitleColor(Constants.Colors.colorTheme, forState: .Normal)
         obj.setTitle("Cancel", forState: .Normal)
         obj.addTarget(self, action: Selector("cancelButtonAction"), forControlEvents: .TouchUpInside)
@@ -82,6 +85,18 @@ class FinderViewController: UIViewController, UIImagePickerControllerDelegate, U
         return obj
     }()
 
+    var alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .Alert)
+    
+    // Create the actions
+    var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+        UIAlertAction in
+        NSLog("OK Pressed")
+    }
+    var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
+        UIAlertAction in
+        NSLog("Cancel Pressed")
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,12 +109,18 @@ class FinderViewController: UIViewController, UIImagePickerControllerDelegate, U
         overlayView.addSubview(numberField)
         overlayView.addSubview(findButton)
         overlayView.addSubview(cancelButton)
-        
+
+        self.view.addSubview(finderLabel)
         self.view.addSubview(imageView)
         self.view.addSubview(changePhotoButton)
         self.view.addSubview(lostButton)
         self.view.addSubview(foundButton)
         self.view.addSubview(overlayView)
+
+        
+        // Add the actions
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
 
         useCamera(self)
     }
@@ -110,6 +131,8 @@ class FinderViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     func findButtonAction() {
+        self.findButton.enabled = false
+        self.findButton.setTitle("Wait...", forState: .Normal)
         savePost()
     }
 
@@ -141,6 +164,8 @@ class FinderViewController: UIViewController, UIImagePickerControllerDelegate, U
                 
                 self.presentViewController(imagePicker, animated: true, 
                     completion: nil)
+        }else {
+            useCameraRoll(self)
         }
     }
 
@@ -217,28 +242,40 @@ class FinderViewController: UIViewController, UIImagePickerControllerDelegate, U
                 case .Success(let upload, _, _):
 
                     upload.responseJSON { response in
-                        let json = JSON(response.result.value!)
-                        let obj: PostDM = PostDM();
-                        obj.postId = json["id"].intValue
-                        obj.name = json["name"].stringValue
-                        obj.desc = json["description"].stringValue
-                        obj.contact = json["contact"].stringValue
-                        obj.lambdal_id = json["lambdal_id"].stringValue
-                        obj.nickname = json["nickname"].stringValue
-                        obj.birthday = json["birthday"].stringValue
-                        obj.age = json["age"].intValue
-                        obj.created_at = json["created_at"].stringValue
-                        obj.updated_at = json["updated_at"].stringValue
-                        obj.mytype = json["mytype"].stringValue
-                        obj.image_url = json["image_url"].stringValue
+                        if (response.result.isSuccess) {
+                            let json = JSON(response.result.value!)
+                            let obj: PostDM = PostDM();
+                            obj.postId = json["id"].intValue
+                            obj.name = json["name"].stringValue
+                            obj.desc = json["description"].stringValue
+                            obj.contact = json["contact"].stringValue
+                            obj.lambdal_id = json["lambdal_id"].stringValue
+                            obj.nickname = json["nickname"].stringValue
+                            obj.birthday = json["birthday"].stringValue
+                            obj.age = json["age"].intValue
+                            obj.created_at = json["created_at"].stringValue
+                            obj.updated_at = json["updated_at"].stringValue
+                            obj.mytype = json["mytype"].stringValue
+                            obj.image_url = json["image_url"].stringValue
+                            obj.match = json["match"].stringValue
+                            
+                            self.appDelegate.postsViewController.post = obj
+                            self.appDelegate.window?.rootViewController = self.appDelegate.postNavigation
+                        }else{
+                            self.presentViewController(self.alertController, animated: true, completion: nil)
+                        }
 
-                        self.appDelegate.postsViewController.post = obj
-                        self.appDelegate.window?.rootViewController = self.appDelegate.postNavigation
+                        self.findButton.enabled = true
+                        self.findButton.setTitle("Search", forState: .Normal)
+                        print(response.result.isSuccess)
                     }
 
                 case .Failure(let encodingError):
                     print(encodingError)
+                    self.findButton.enabled = true
+                    self.findButton.setTitle("Search", forState: .Normal)
                 }
+
         })
 
     }

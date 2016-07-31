@@ -2,7 +2,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-private let kButtonHeight: CGFloat = 30.0
+private let kButtonHeight: CGFloat = 40.0
 
 class PostsViewController: TemplateViewController, UIScrollViewDelegate , LostTableViewDelegate, FoundTableViewDelegate {
     var post: PostDM = PostDM();
@@ -34,8 +34,8 @@ class PostsViewController: TemplateViewController, UIScrollViewDelegate , LostTa
 
     lazy var lostButton: UIButton = {
         var obj = UIButton(frame: CGRectMake(0, 0, self.view.frame.size.width/2, kButtonHeight));
-        obj.backgroundColor = Constants.Colors.colorThemeMainBG
-        obj.setTitleColor(Constants.Colors.colorTheme, forState: .Normal)
+        obj.backgroundColor = Constants.Colors.colorTheme
+        obj.setTitleColor(Constants.Colors.colorFontTitle, forState: .Normal)
         obj.setTitle("Lost", forState: .Normal)
         obj.addTarget(self, action: Selector("lostButtonAction"), forControlEvents: .TouchUpInside)
         return obj
@@ -43,8 +43,8 @@ class PostsViewController: TemplateViewController, UIScrollViewDelegate , LostTa
 
     lazy var foundButton: UIButton = {
         var obj = UIButton(frame: CGRectMake(self.view.frame.size.width/2, 0, self.view.frame.size.width/2, kButtonHeight));
-        obj.backgroundColor = Constants.Colors.colorThemeLightGray
-        obj.setTitleColor(Constants.Colors.colorTheme, forState: .Normal)
+        obj.backgroundColor = Constants.Colors.colorTheme
+        obj.setTitleColor(Constants.Colors.colorFontReg, forState: .Normal)
         obj.setTitle("Found", forState: .Normal)
         obj.addTarget(self, action: Selector("foundButtonAction"), forControlEvents: .TouchUpInside)
         return obj
@@ -52,6 +52,7 @@ class PostsViewController: TemplateViewController, UIScrollViewDelegate , LostTa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = Constants.Colors.colorTheme
         self.view.addSubview(scrollView)
         self.view.addSubview(buttonsView)
         scrollView.addSubview(lostTableView)
@@ -61,7 +62,7 @@ class PostsViewController: TemplateViewController, UIScrollViewDelegate , LostTa
     }
     
     override func viewDidAppear(animated: Bool) {
-//        print(self.post.postId = 15)
+        self.title = "Match: \(self.post.name!)"
         foundTableView.assignPost(self.post)
         lostTableView.assignPost(self.post)
     }
@@ -79,14 +80,14 @@ class PostsViewController: TemplateViewController, UIScrollViewDelegate , LostTa
     }
 
     func lostButtonAction() {
-        lostButton.backgroundColor = Constants.Colors.colorThemeMainBG
-        foundButton.backgroundColor = Constants.Colors.colorThemeLightGray
+        lostButton.setTitleColor(Constants.Colors.colorFontTitle, forState: .Normal)
+        foundButton.setTitleColor(Constants.Colors.colorFontReg, forState: .Normal)
         self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     
     func foundButtonAction() {
-        foundButton.backgroundColor = Constants.Colors.colorThemeMainBG
-        lostButton.backgroundColor = Constants.Colors.colorThemeLightGray
+        lostButton.setTitleColor(Constants.Colors.colorFontReg, forState: .Normal)
+        foundButton.setTitleColor(Constants.Colors.colorFontTitle, forState: .Normal)
         self.scrollView.setContentOffset(CGPoint(x: self.view.frame.size.width, y: 0), animated: true)
     }
     

@@ -10,6 +10,7 @@ class FoundTableView: UIView, UITableViewDelegate, UITableViewDataSource, PostCe
     lazy var refreshControl: UIRefreshControl = {
         var obj = UIRefreshControl();
         obj.addTarget(self, action: "refreshAction:", forControlEvents: UIControlEvents.ValueChanged)
+        obj.tintColor = Constants.Colors.colorFontReg
         
         return obj
     }()
@@ -32,7 +33,9 @@ class FoundTableView: UIView, UITableViewDelegate, UITableViewDataSource, PostCe
         super.init(frame: frame)
         
         tableView.frame =   CGRectMake(0, 0, frame.size.width, frame.size.height);
-        self.backgroundColor = UIColor.whiteColor()
+        tableView.separatorColor = UIColor.blackColor()
+        tableView.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = Constants.Colors.colorTheme
         
         self.addSubview(self.tableView)
         self.refreshControl.beginRefreshing()
@@ -70,6 +73,7 @@ class FoundTableView: UIView, UITableViewDelegate, UITableViewDataSource, PostCe
                         obj.updated_at = subJson["updated_at"].stringValue
                         obj.mytype = subJson["mytype"].stringValue
                         obj.image_url = subJson["image_url"].stringValue
+                        obj.match = subJson["match"].stringValue
                         self.posts.append(obj)
                         
                     }

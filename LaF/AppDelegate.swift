@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+
         mainNavigation.viewControllers    = [finderViewController]
         authNavigation.viewControllers    = [facebookController]
         postNavigation.viewControllers    = [postsViewController]
@@ -57,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if (NSUserDefaults.standardUserDefaults().objectForKey("defaults saved user") == nil) {
                 window.rootViewController = authNavigation
             }else{
+                self.currentUser = UserDM.getActiveUser()
                 window.rootViewController = mainNavigation //postNavigation
             }
 

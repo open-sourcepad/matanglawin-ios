@@ -5,10 +5,8 @@ import SwiftyJSON
 class FacebookViewController: UIViewController, FacebookControllerDelegate  {
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
-    lazy var loginButon: UIButton = {
-        var obj = UIButton(frame: CGRectMake(30, (self.view.frame.size.height/2), self.view.frame.size.width - 60, 50));
-        obj.backgroundColor = Constants.Colors.colorThemeLightGray
-        obj.setTitleColor(Constants.Colors.colorTheme, forState: .Normal)
+    lazy var loginButon: MainButton = {
+        var obj = MainButton(frame: CGRectMake(30, (self.view.frame.size.height/2), self.view.frame.size.width - 60, 50));
         obj.setTitle("Login via Facebook", forState: .Normal)
         obj.addTarget(self, action: Selector("loginButtonAction"), forControlEvents: .TouchUpInside)
         return obj
@@ -23,12 +21,13 @@ class FacebookViewController: UIViewController, FacebookControllerDelegate  {
     }()
 
     lazy var finderLabel: UILabel = {
-        let obj: UILabel = UILabel(frame: CGRectMake(0, (self.view.frame.size.height/2) - 75, self.view.frame.size.width, 50))
-        obj.text = "Finder!"
+        let obj: UILabel = UILabel(frame: CGRectMake(0,  (self.view.frame.size.height/2)-120, self.view.frame.size.width, 100))
+        obj.text = "Lost or Found someone? Post it here!"
         obj.textAlignment = NSTextAlignment.Center
         obj.backgroundColor = Constants.Colors.colorTheme
-        obj.textColor = Constants.Colors.colorThemeLightGray
-        
+        obj.textColor = Constants.Colors.colorFontReg
+        obj.font = UIFont(name: obj.font.fontName, size: 20.0)
+
         return obj
     }()
 
@@ -36,8 +35,8 @@ class FacebookViewController: UIViewController, FacebookControllerDelegate  {
         let obj: UILabel = UILabel(frame: self.loginButon.frame)
         obj.text = "Loading..."
         obj.textAlignment = NSTextAlignment.Center
-        obj.backgroundColor = Constants.Colors.colorThemeLightGray
-        obj.textColor = Constants.Colors.colorTheme
+        obj.backgroundColor = Constants.Colors.colorTheme
+        obj.textColor = Constants.Colors.colorFontReg
         obj.hidden = true
         
         return obj

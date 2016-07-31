@@ -17,8 +17,11 @@ struct Constants {
     // Constants.Colors.nameOfConstant
     struct Colors {
         static let colorThemeLightGray  = RGBConverter.rgb(246, green: 247, blue: 248)
-        static let colorThemeMainBG     = RGBConverter.rgb(255, green: 255, blue: 255)
-        static let colorTheme           = RGBConverter.rgb(78, green: 113, blue: 110)
+        static let colorThemeMainBG     = RGBConverter.rgb(37, green: 43, blue: 50)
+        static let colorTheme           = RGBConverter.rgb(37, green: 43, blue: 50)
+        static let colorFontReg         = RGBConverter.rgb(160, green: 164, blue: 167)
+        static let colorFontTitle       = RGBConverter.rgb(255, green: 255, blue: 255)
+        
     }
     
     // Constants.API.nameOfConstant

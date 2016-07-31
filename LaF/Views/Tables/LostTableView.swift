@@ -10,6 +10,7 @@ class LostTableView: UIView, UITableViewDelegate, UITableViewDataSource, PostCel
     lazy var refreshControl: UIRefreshControl = {
         var obj = UIRefreshControl();
         obj.addTarget(self, action: "refreshAction:", forControlEvents: UIControlEvents.ValueChanged)
+        obj.tintColor = Constants.Colors.colorFontReg
 
         return obj
     }()
@@ -32,8 +33,9 @@ class LostTableView: UIView, UITableViewDelegate, UITableViewDataSource, PostCel
         super.init(frame: frame)
         
         tableView.frame =   CGRectMake(0, 0, frame.size.width, frame.size.height);
-        self.backgroundColor = UIColor.whiteColor()
-
+        tableView.separatorColor = UIColor.blackColor()
+        tableView.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = Constants.Colors.colorTheme
         self.addSubview(self.tableView)
         self.refreshControl.beginRefreshing()
     }
@@ -49,6 +51,7 @@ class LostTableView: UIView, UITableViewDelegate, UITableViewDataSource, PostCel
     }
 
     func getPost() {
+        print(UserDM.getActiveUser().authenticationToken!)
         Alamofire.request(.GET, Constants.API.lost, headers:
             ["AuthToken": UserDM.getActiveUser().authenticationToken!], parameters: ["id": self.post.postId!])
             .validate()
@@ -72,6 +75,7 @@ class LostTableView: UIView, UITableViewDelegate, UITableViewDataSource, PostCel
                         obj.updated_at = subJson["updated_at"].stringValue
                         obj.mytype = subJson["mytype"].stringValue
                         obj.image_url = subJson["image_url"].stringValue
+                        obj.match = subJson["match"].stringValue
                         self.posts.append(obj)
                         
                     }
